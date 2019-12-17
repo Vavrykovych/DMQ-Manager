@@ -31,8 +31,8 @@ def add_node():
                 )
                 node_service.write(NODES)
                 data_nodes_id_count += 1
-                rsa_key = {'public_key': RSA_PUBLIC_KEY}
-                requests.post(url=url + '/connect', json=rsa_key)
+                rsa_key = {'rsa_public_key': RSA_PUBLIC_KEY}
+                requests.get(url=url + '/connect', headers=rsa_key)
                 for queue in QUEUE:
                     name = queue["name"]
                     requests.post(url=url + '/queues', json={"name": name}, headers = request.headers['access_token'])
